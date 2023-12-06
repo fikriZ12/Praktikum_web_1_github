@@ -1,0 +1,16 @@
+body{
+            background-color: blue;
+    }
+    h1{
+        text-align: center;
+        color: goldenrod;
+    }
+
+    @media screen and (max-width: 720px){
+            body{
+                background-color: mediumspringgreen;
+            }
+            h1{
+                color:cyan;
+            }
+        }
