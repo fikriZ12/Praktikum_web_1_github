@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Picker</title>
+    <style>
+        #image-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Image Picker</h2>
+
+    <label for="image-select">Pilih gambar ini:</label>
+    <select id="image-select" onchange="displayImage()">
+        <option value="./img/tokek.jpeg">Gambar 1</option>
+        <option value="./img/rusa.jpeg">Gambar 2</option> 
+        <option value="./img/kucing.jpeg">Gambar 3</option>
+        <option value="./img/bebek.jpeg">Gambar 4</option>
+        <option value="./img/ular.jpeg">Gambar 5</option>
+        <option value="./img/tikus.jpeg">Gambar 6</option>
+    </select>
+
+    <div id="image-container">
+        <img id="selected-image" src="./img/" alt="Selected Image">
+    </div>
+
+    <script>
+        function displayImage() {
+            var selectBox = document.getElementById("image-select");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            
+            var imageContainer = document.getElementById("selected-image");
+            imageContainer.src = selectedValue;
+
+            alert("IMAGE PICKER: " + selectedValue);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    select, input, button {
+      margin-bottom: 20px;
+      padding: 8px;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Currency Converter</h2>
+
+  <label for="currency">Valas:</label>
+  <select id="currency">
+    <option value="usd">USD (US Dollar)</option>
+    <option value="sgd">SGD (Dollar Singapore)</option>
+    <option value="myr">MYR (Ringgit Malaysia)</option>
+    <option value="jpy">JPY (Yen Jepang)</option>
+    <option value="eur">EUR (Euro)</option>
+    <option value="sar">SAR (Riyal Arab Saudi)</option>
+  </select>
+
+  <br>
+
+  <label for="amount">Masukan Nominal:</label>
+  <input type="number" id="amount" placeholder="Enter amount">
+
+  <br>
+
+  <button onclick="convertCurrency()">Convert</button>
+
+  <br>
+
+  <div id="result">Converted amount: </div>
+
+  <script>
+    function convertCurrency() {
+      var currencyElement = document.getElementById("currency");
+      var amountElement = document.getElementById("amount");
+      var resultElement = document.getElementById("result");
+
+      var currency = currencyElement.value;
+      var amount = parseFloat(amountElement.value);
+
+      var exchangeRates = {
+        usd: 9915,
+        sgd: 13472,
+        myr: 874,
+        jpy: 120,
+        eur: 15888,
+        sar: 3592,
+      };
+
+      if (!isNaN(amount)) {
+        if (exchangeRates.hasOwnProperty(currency)) {
+          var convertedAmount = amount * exchangeRates[currency];
+          resultElement.textContent = "Converted amount: " + convertedAmount.toLocaleString("id-ID") + " IDR";
+        } else {
+          resultElement.textContent = "Invalid currency selection";
+        }
+      } else {
+        resultElement.textContent = "Please enter a valid amount";
+      }
+    }
+  </script>
+
+</body>
+</html>
